@@ -88,6 +88,85 @@ list.erase(i);
 int size = list.size();
 ```
 
+## Map
+
+```c++
+#include <string>
+#include <map>
+using namespace std;
+
+map<string, int> mp; // 以string类型为索引，指向int类型
+
+mp.size(); // 返回元素个数
+
+mp["hello"] = 1; // 访问操作，该操作会在没有"hello"键值的情况下创造一个键值为"hello"的元素
+
+// 如果我们需要判断一个键值是否存在于map...    count()方法
+mp.count("key"); // 函数会返回键值为"key"的元素在mp中的数量，如果为0代表不存在
+
+// 遍历map...
+map<string, int>::iterator it; // 声明一个迭代器，注意类型应该与需要查找的map类型完全一样(双冒号"::"前的部分)
+while (it != mp.end()) {
+    it->first; // 元素的键值（索引）
+    it->second; // 键值（索引）指向的内容
+    // 即：first->second
+    
+    it++;
+}
+
+// map元素删除
+it = mp.begin();
+mp.erase(it); // 通过迭代器删除元素
+string key = "hello";
+mp.erase(key); // 通过键值(key)删除元素
+```
+
+## Stack
+
+```c++
+#include <stack>
+using namespace std;
+
+// 声明用法：stack<type> var_name;
+stack<int> myIntStack;
+myIntStack.size(); // 获得栈的大小
+
+myIntStack.push(7); // 入栈
+
+int getTop = myIntStack.top(); // 获得顶部元素，不会弹出顶部元素
+int getInt = myIntStack.pop(); // 出栈（弹出顶部元素）
+
+if (myIntStack.empty()){ // bool量：栈是否为空
+    return 0;
+}
+else return -1;
+```
+
+## Queue
+
+```c++
+#include <queue>
+using namespace std;
+
+// 声明：queue<type> var_name;
+queue<int> myQ;
+myQ.size(); // 获得队列大小
+
+myQ.push(7);
+myQ.push(9);
+myQ.push(8); // 在末尾加入元素
+
+int getInt = myQ.pop(); // 弹出第一个元素
+
+int visitInt = myQ.back(); // 返回末尾元素
+
+visitInt = myQ.front(); // 返回首元素
+
+if(myQ.empty()); // bool量，是否为空
+```
+
+
+
 ## String
 
 定义：string str;
@@ -99,6 +178,39 @@ using namespace std;
 string str;
 // 获取string的长度
 int length = str.length();
+
+// 初始化
+string str0(5, '.'); // 初始化字符串为五个点 "....."
+
+string str1;
+str1 = "first string";
+
+char c_str[] = "sec.";
+
+string str2(str1);
+string str3(c_str);
+string str4(str1, 3); // 将str1开始于3的字符串赋值到新的字符串
+string str5(str1, 3, 6); // 将str1开始于3且长度至多为6的字符串赋值到新的字符串
+
+// string常用方法
+string test_str;
+test_str = "hello world";
+test_str += "ni hao";
+
+// substr()方法
+std::string str="We think in generalities, but we live in details.";
+
+// "think" 从第3（0为第一个）字符开始，取长度为5的字符串
+std::string str2 = str.substr (3,5);
+
+// 返回字符串“live”所在的位置
+std::size_t pos = str.find("live");      // position of "live" in str
+
+// 获得从“live”开始，直到末尾的子字符串
+std::string str3 = str.substr (pos);     // get from "live" to the end
+
+std::cout << str2 << ' ' << str3 << '\n';
+// Output: think live in details.
 ```
 
 
@@ -117,6 +229,7 @@ class class_name: # 类的定义
         pass
     
 new_class = class_name() # 对象实例化
+
 ```
 
 
@@ -130,6 +243,7 @@ print('时间：(%Y-%m-%d %H:%M:%S %f):', dt.strftime('%Y-%m-%d %H:%M:%S %f'))
 # 时间：(%Y-%m-%d %H:%M:%S %f): 2019-04-17 15:04:59 815000
 print('时间：(%Y-%m-%d %H:%M:%S %p):', dt.strftime('%y-%m-%d %I:%M:%S %p'))
 # 时间：(%Y-%m-%d %H:%M:%S %p): 19-04-17 03:04:59 PM
+
 ```
 
 
@@ -148,6 +262,7 @@ pip是安装Python包的主要方法。
 
 ```shell
 pip install -i <url>
+
 ```
 
 pip国内的一些镜像：
@@ -161,6 +276,7 @@ pip国内的一些镜像：
 清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/ 
 中国科学技术大学 http://pypi.mirrors.ustc.edu.cn/simple/
 阿里云 http://mirrors.aliyun.com/pypi/simple/ 
+
 ```
 
 ### pip依赖问题
@@ -169,11 +285,12 @@ pip国内的一些镜像：
 
 ```shell
 aptitude install <packet_name>
+
 ```
 
 
 
-##  字符串（Python）
+## 字符串（Python）
 
 **url 格式文本处理**
 
@@ -189,6 +306,7 @@ url_string = urllib.parse.quote( py_string )
 py_string = urllib.parse.unquote( url_string )
 
 # 注：python2 ：将 urllib.parse 替换为 urlparse
+
 ```
 
 **string.decode():**
@@ -206,6 +324,7 @@ li = ['1', '3', '5', '7']
 li.remove('3') # 通过list对象的remove( val )方法，直接删除列表中的某个元素
 
 del li[1] # 利用del， 直接通过数组下标（索引）删除
+
 ```
 
 
@@ -219,6 +338,7 @@ dict[key] = value
 # 一般形式:
 
 dict = { 'key' : 'value', ... } # value 可以是具体的值或者 list 或者 dict 或者 python 中的任何对象，key 一般是具体的值
+
 ```
 
 **字典的遍历**
@@ -228,6 +348,7 @@ dict = { 'key' : 'value', ... } # value 可以是具体的值或者 list 或者 
 ```python
 for key in dict.keys():
 	dict[key]
+
 ```
 
 **删除操作**
@@ -259,6 +380,7 @@ size = q.qsize()
 isEmpty = q.empty() # 返回队列是否为空，一般使用get()方法获得元素的时候应该先判断队列是否为空
 
 ifFull = q.full() # 队列是否为满
+
 ```
 
 
@@ -277,6 +399,7 @@ dict = json.loads( jsonStr )
 # 将字典转换为json字符串
 
 jsonStr = json.dumps( dict )
+
 ```
 
 ## 文件操作(python)
@@ -293,6 +416,7 @@ file_createOrChange = open('fileName', 'w+')
 
 string = file_read.read()
 file_createOrChange.write(string)
+
 ```
 
 删除文件：os.remove('<文件名>')
@@ -317,12 +441,14 @@ C:\Users\Acer\AppData\Local\Programs\Python\Python38\Lib\site-packages\werkzeug\
 
 ```python
 module = ast.fix_missing_locations(ast.Module([func_ast]))
+
 ```
 
 改为：
 
 ```python
 module = ast.fix_missing_locations(ast.Module([func_ast], []))
+
 ```
 
 即可。这是因为该函数需要两个参数而原函数之提供了一个。
@@ -353,12 +479,14 @@ module = ast.fix_missing_locations(ast.Module([func_ast], []))
 from flask import Flask
 
 app = Flask(__name__)
+
 ```
 
 可以自定义 **静态/模板** 资源存放路径：
 
 ```python
 app = Flask(__name__, static_folder='static_path', template_folder='template_path')
+
 ```
 
 启动服务器，可以设置服务器监听的IP和端口号以及debug选项，debug为真时在服务报错的时候会向前端返回错误信息：
@@ -366,6 +494,7 @@ app = Flask(__name__, static_folder='static_path', template_folder='template_pat
 ```python
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', port=9555, debug=True) # host='ip_address', port=port
+
 ```
 
 **请求响应函数设计：**
@@ -380,6 +509,7 @@ from flask import render_template
 @app.route('/') # 接收到修饰器中的url时运行该函数
 def mainPageRet():
 	return render_template("mainPage.html") # 从模板资源中查找并返回文件
+
 ```
 
 **接受POST/GET请求并从url中获取数据**：
@@ -410,6 +540,7 @@ def handle_get():
 def handle_post_get():
     msg = request.args.get('<var_name>')
     return 'POST:' + msg
+
 ```
 
 **接受POST请求并接收POST发送的数据**：
@@ -424,6 +555,7 @@ def handleStream():
     
     stream = request.stream.read().decode()
     return stream
+
 ```
 
 接受同一类型的url请求时... ...有时候url类型相似且要执行的程序也差不多，我们可以从url中将其最后一部分作为参数传到函数中：
@@ -438,6 +570,7 @@ def retFile(file_name):
     	do sth.
     '''
 	return file_name
+
 ```
 
 **页面跳转（页面重定向）**：
@@ -458,6 +591,7 @@ def handle_next():
 @app.route('/next_page')
 def nextPage():
     return render_template('nextPath.html') # 返回 nextPath.html 网页
+
 ```
 
 返回值，之前的例子中已经说明了需要返回网页时应该调用的函数，如果只需要返回流数据，直接返回即可。
@@ -469,12 +603,14 @@ def nextPage():
 ```python
 return render_template('<模板资源（网页）文件名称>', var_name=var)
 # var 即值， 前端通过var_name获得
+
 ```
 
 之后，前端通过下述方法可以直接获得服务器传值。
 
 ```html
 <p> {{ var_name }} </p>
+
 ```
 
 
@@ -492,6 +628,7 @@ var value;
 function useGlobal() {
     window.value; // 通过 window.<var_name> 获取全局变量
 }
+
 ```
 
 `所有的元素都从属于 window 对象。`
@@ -501,6 +638,7 @@ JavaScript中的**空变量**：
 ```javascript
 var value = null; // 空值
 var type = undefined; // 变量未定义
+
 ```
 
 JavaScript中的变量相等：
@@ -509,6 +647,7 @@ JavaScript中的变量相等：
 var a, b;
 a == b; // 比较变量 a b 的值是否相同（a b 的值在它们类型不同的情况下依旧可能相同）
 a === b; // 比较变量 a b 的值以及类型是否都相同
+
 ```
 
 ## 字符串 (JavaScript)
@@ -519,18 +658,21 @@ a === b; // 比较变量 a b 的值以及类型是否都相同
 var string = '123';
 var num = parseInt(string) // 字符串转整型数
 var floatNum = parseFloat(string) // 字符串转浮点数
+
 ```
 
 数字转字符串：
 
 ```javascript
 var string = num.toString(); // 数字变量中有 toString() 成员
+
 ```
 
 删除字符串的最后一个字符：
 
 ```javascript
 string = string.substring(0, string.length - 1);
+
 ```
 
 ## 数组 (JavaScript)
@@ -539,6 +681,7 @@ string = string.substring(0, string.length - 1);
 var list = new Array()
 
 length = list.length
+
 ```
 
 `注：数组的操作与字典类似，默认情况下可以把数组理解为键值为0、1、2...等自然数的字典，但注意，数组与字典的区别在于字典可以正确转换成JSON字符串，而数组不行。`
@@ -552,6 +695,7 @@ dict[key] = value;
 // 一般形式
 
 var dict = { 'key' : 'value', ... }
+
 ```
 
 **字典的遍历**
@@ -560,6 +704,7 @@ var dict = { 'key' : 'value', ... }
 for (var key in dict) {
     dict[ key ];
 }
+
 ```
 
 判断字典中是否存在某键值 ( key )：
@@ -568,6 +713,7 @@ for (var key in dict) {
 if ( '<key>' in dict ) {
     // 如果字典 dict 中存在键值 <key> ，如果是返回 True 否则返回 False 
 }
+
 ```
 
 
@@ -586,12 +732,12 @@ var obj = JSON.parse( jsonStr )
 // 将js字典转换成json字符串
  
 var jsonStr = JSON.stringify( obj )
+
 ```
 
 ## 计时事件（定期执行函数/等待后执行函数/‘多线程’）
 
 - setInterval() - 间隔一定时间循环执行函数
-
 - setTimeout() - 在指定时间之后运行函数
 
 ```javascript
@@ -602,6 +748,7 @@ var tmpTimeout = setTimeout(function(){ /* do sth. */ }, time); // 设置在时�
 // end
 clearInterval(tmpVar); // 结束循环执行函数
 clearTimeout(tmpTimeout); // 结束等待执行函数
+
 ```
 
 
@@ -616,6 +763,7 @@ JSON是一种数据结构描述格式，格式如下：
 
 ```json
 { "name" : "yfl_lab", "type" : 26, "sub_obj" : { "type" : 6, "var" : "yfl_lab" } }
+
 ```
 
 # 网页设计
@@ -626,6 +774,7 @@ JSON是一种数据结构描述格式，格式如下：
 
 ```html
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 ```
 
 ``
@@ -638,6 +787,7 @@ HTML页面跳转：
 <button onclick="location.href = '/url'"></button>
 
 <a href="/url"></a> <!-- 超链接 -->
+
 ```
 
 将子元素相对于父元素**居中**：
@@ -648,6 +798,7 @@ HTML页面跳转：
         <!-- 同时对子元素和父元素的 style(css) 中设置上述属性实现子元素相对于子元素的相对布局 -->
     </div>
 </div>
+
 ```
 
 
@@ -660,6 +811,7 @@ HTML页面跳转：
 
 ```javascript
 window.location.href = '<url>'
+
 ```
 
 ### HTML调用Js中的函数
@@ -668,6 +820,7 @@ window.location.href = '<url>'
 
 ```javascript
 var aim_func = function(){ console.log('调用成功') };
+
 ```
 
 在HTML中调用Js中的函数变量：
@@ -676,10 +829,12 @@ var aim_func = function(){ console.log('调用成功') };
 <script src='./aim_script.js'>
 	aim_func();
 </script>
+
 ```
 
 ```javascript
 location.reload(); // 重新加载页面
+
 ```
 
 
@@ -711,6 +866,7 @@ tag.className
 {
     text-align:center;
 }
+
 ```
 
 
@@ -727,6 +883,7 @@ tag.className
   <head>
   <link rel="stylesheet" type="text/css" href="mystyle.css">
   </head>
+  
   ```
 
   
@@ -742,6 +899,7 @@ tag.className
           body{ background-image:url("img/img_url.png"); }
       </style>
   </head>
+  
   ```
 
   
@@ -752,6 +910,7 @@ tag.className
 
   ```html
   <p style="color:blue;margin-left:20px">test tag p</p>
+  
   ```
 
 当一个标签有多重样式时的优先级：**内联样式>内部样式>外部样式>浏览器默认样式**
@@ -771,6 +930,7 @@ p
     background-position:right top; /* 不平铺的情况下设置位置 */
     background-attachment:fixed; /* 使背景图像不随屏幕滚动 */
 }
+
 ```
 
 
@@ -799,6 +959,7 @@ function loadXMLDoc(url, cfunc, msg) {
     // 发送请求时要附加的信息 (msg:流信息)
     xmlhttp.send(msg);
 }
+
 ```
 
 一般情况下建议将需要发送的消息以表单提交的形式追加在 url 之后，以 xmlhttp.send(msg) 函数发送的数据流在服务器端需要用不同于接收前端传值的方法，这里以Python下Flask框架服务器为例：
@@ -815,6 +976,7 @@ def handle_recvStreamMsg():
     # 解码二进制流为String
     string_msg = stream.decode()
     return 'recv'
+
 ```
 
 
@@ -840,6 +1002,7 @@ function doSomething(){
         }
     }, msg);
 }
+
 ```
 
 传输表单数据：在调用 loadXMLDoc( url, cfunc, msg ) 时，在 url 后追加:
@@ -864,6 +1027,7 @@ function doSomething(){
 <head>
     <script src="jquery-1.10.2.min.js"></script>
 </head>
+
 ```
 
 **注意：** <script> 标签中 src 属性后的 url 中的 jQuery 版本、地址和实际情况一致。
@@ -876,6 +1040,7 @@ function doSomething(){
 $(function() {
     // do sth.
 })；
+
 ```
 
 **此外jQuery找不到动态生成的元素，可以通过为动态元素建立监听实现**
@@ -886,6 +1051,7 @@ div += '<li id='动态元素' onclick='li-click(this)'></li>';
 function li-click(obj){
     $(obj).attr('id');
 }
+
 ```
 
 ### 元素选择
@@ -910,6 +1076,7 @@ jQuery的主要功能：HTML元素选取、元素操作、CSS操作、事件、�
 ```javascript
 $('div').css('background-color', 'blue');
 $('div').css('background-color');
+
 ```
 
 - attr() 方法：该方法可以获得或改变元素中的属性值。
@@ -917,6 +1084,7 @@ $('div').css('background-color');
 ```javascript
 $('div').attr('id', 'yfl-lab');
 $('div').attr('id');
+
 ```
 
 **值的获取：**
@@ -925,6 +1093,7 @@ $('div').attr('id');
 $('div').value();
 $('div').html();
 $('div').text();
+
 ```
 
 
@@ -933,6 +1102,7 @@ $('div').text();
 
 ```javascript
 $( <element> ).event( function() ) // 当选择的元素对应的action事件发生时执行function()函数
+
 ```
 
 - click( ) : 鼠标**点击元素**时触发；
@@ -973,6 +1143,7 @@ before('txt') : 在被选元素之前插入内容。
 
 ```javascript
 $('span').parent().attr('id', 'parent');
+
 ```
 
 **parents()**
@@ -981,12 +1152,14 @@ $('span').parent().attr('id', 'parent');
 
 ```javascript
 $('span').parents().css('background-color', 'red');
+
 ```
 
 **parentsUntil()**
 
 ```javascript
 $('span').parentsUntil('div'); // 返回<span>到<div>之间的所有元素（不包括<span>和<div>）
+
 ```
 
 #### 后代遍历
@@ -1000,6 +1173,7 @@ $('span').parentsUntil('div'); // 返回<span>到<div>之间的所有元素（�
 ```javascript
 $('div').find('span'); // 返回所有后代中的<span>
 $('div').find('*'); // 返回所有后代
+
 ```
 
 #### 同胞（同级）遍历
@@ -1011,6 +1185,7 @@ $('div').find('*'); // 返回所有后代
 ```
 $('div').siblings(); // 返回所有同级元素
 $('div').siblings('div'); // 返回所有标签为<div>的同级元素
+
 ```
 
 **next()**: 返回下一个同级元素。
@@ -1032,6 +1207,7 @@ $('div').siblings('div'); // 返回所有标签为<div>的同级元素
 ```javascript
 // 返回所有类名为url的p元素
 $('p').filter('.url');
+
 ```
 
 **not()**:
@@ -1039,6 +1215,7 @@ $('p').filter('.url');
 ```javascript
 // 返回所有类名不是url的p元素
 $('p').not('.url');
+
 ```
 
 
@@ -1051,12 +1228,11 @@ $('p').not('.url');
 
 ```javascript
 $(selector).load(URL,data,callback);
+
 ```
 
 - URL :请求 url
-
 - data :要发送的**表单数据**
-
 - callback :**回调函数**
 
 **get()**
@@ -1065,11 +1241,10 @@ $(selector).load(URL,data,callback);
 
 ```js
 $.get(URL,callback);
+
 ```
 
-
 - URL :请求 url
-
 - callback :**回调函数**
 
 **post()**
@@ -1078,11 +1253,11 @@ $.get(URL,callback);
 
 ```javascript
 $.post(URL,data,callback);
+
 ```
+
 - URL :请求 url
-
 - data :要发送的**流数据**
-
 - callback :**回调函数**
 
 `注1：jQuery中回调函数被定义为 function(data, status) data为从服务器返回的数据; status为当前状态。`
@@ -1099,6 +1274,7 @@ $(function () {
 		console.log('data:', data, '\nstatus:', status);
 	});
 });
+
 ```
 
 这些附带数据均以表单提交形式附加，在服务器端用接收表单的方法接收数据即可，服务器端代码（以Python Flask框架为例）：
@@ -1108,6 +1284,7 @@ $(function () {
 def handle_send():
 	print(request.args.get('send'), request.stream.read().decode())
 	return 'return ok'
+
 ```
 
 ## Bootstrap
@@ -1128,6 +1305,7 @@ def handle_send():
     <h1>hello world</h1>
 </body>
 </html>
+
 ```
 
 
@@ -1142,6 +1320,7 @@ def handle_send():
 <div class="container">
 	<!-- 这里是一个网格系统 -->
 </div>
+
 ```
 
 网格系统以行为基本单位：
@@ -1150,6 +1329,7 @@ def handle_send():
 <div class="row">
     <!-- 这是一行 -->
 </div>
+
 ```
 
 
@@ -1162,6 +1342,7 @@ def handle_send():
     <div class="col-md-4">这是一个占宽为4的列</div>
     <div class="col-md-8">这是一个占宽为8的列</div>
 </div>
+
 ```
 
 ### 组件
@@ -1176,6 +1357,7 @@ def handle_send():
         <!-- do sth. -->
     </div>
 </div>
+
 ```
 
 **操作：**
@@ -1184,6 +1366,7 @@ def handle_send():
 
 ```javascript
 $('选中目标滚动条元素').scrollTop( value ); // value为数字，取值范围大于等于0
+
 ```
 
 
@@ -1198,6 +1381,7 @@ $('选中目标滚动条元素').scrollTop( value ); // value为数字，取值�
 
 ```html
 <script src="d3.min.js"></script>
+
 ```
 
 ## jTopo
