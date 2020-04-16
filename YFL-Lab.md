@@ -109,6 +109,15 @@ vi doc_file
 
 # C/C++
 
+## 模板
+
+```c++
+// 在函数、类前声明 template<typename T>
+
+template<typename  T>
+void func(T a, T b){}
+```
+
 ## Vector
 
 定义：vector< 变量类型 > list;
