@@ -308,6 +308,24 @@ std::cout << str2 << ' ' << str3 << '\n';
 // Output: think live in details.
 ```
 
+## Algorithm
+
+```c++
+#include <algorithm>
+
+// 排序
+vector<T> array;
+sort(array.begin(), array.end()); // 自小到大排序
+sort(array.begin(), array.end(), less<T>()); // 使用仿函数从小到大排序
+sort(array.begin(), array.end(), greater<T>()); // 使用仿函数从大到小排序
+
+// 也可以使用自定比较函数实现排序
+bool cmp(T a, T b){
+    return a > b; // 当满足条件 a > b 的时候出发sort排序的交换
+}
+sort(array.begin(), array.end(), cmp);
+```
+
 
 
 # Python
