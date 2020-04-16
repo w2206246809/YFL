@@ -88,6 +88,39 @@ list.erase(i);
 int size = list.size();
 ```
 
+## 堆
+
+堆在c++ STL中属于算法，而非容器。
+
+```c++
+#include <algorithm>
+#include <vector>
+
+vector<int> big_heap = {5, 7, 6, 4, 8, 9, 3, 2};
+vector<int> small_heap = {5, 7, 6, 4, 8, 9, 3, 2};
+
+make_heap(big_heap.begin(), big_heap.end()); // 默认建立大顶堆
+make_heap(big_heap.begin(), big_heap.end(), less<int>()); // 建立大顶堆
+make_heap(small_heap.begin(), small_heap.end(), greater<int>()); // 建立小顶堆
+
+// 增加元素
+big_heap.push_back(10);
+small_heap.push_back(10);
+// 调整堆（前提条件需要vector增加新元素之前就是堆），注意最后的参数应与之前对堆的操作一致（大顶堆或小顶堆）
+push_heap(big_heap.begin(), big_heap.end());
+push_heap(big_heap.begin(), big_heap.end(), less<int>());
+push_heap(small_heap.begin(), small_heap.end(), greater<int>());
+
+// 删除元素
+// 将堆顶元素放到vector最后（配置vector.pop_back()移除堆顶元素）（同样注意前后堆操作选择的仿函数一致，最后一个参数就是仿函数）
+pop_heap(big_heap.begin(), big_heap.end());
+pop_heap(big_heap.begin(), big_heap.end(), less<int>());
+pop_heap(small_heap.begin(), small_heap.end(), greater<int>());
+
+big_heap.pop_back(); // 真正移除元素
+small_heap.pop_back(); // 之前的操作只是将堆顶元素（vector[0]）移到了最后
+```
+
 ## Map
 
 ```c++
