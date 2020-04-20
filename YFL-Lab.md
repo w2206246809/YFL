@@ -189,6 +189,28 @@ big_heap.pop_back(); // 真正移除元素
 small_heap.pop_back(); // 之前的操作只是将堆顶元素（vector[0]）移到了最后
 ```
 
+## Pair
+
+```c++
+#include <utility>
+using namespace std;
+// template<class T1, class T2> struct pair;
+
+pair<int, double> p1;
+pair<string, int> p2("hello", 6);
+
+p1 = make_pair(62, 62.256); // 使用 make_pair 创建新对象
+
+cout << p1.first << p1.second << endl; // 访问
+
+// 使用 tie(v1, v2) 方法可以获得从函数返回的 pair 值
+pair<string, int> func(){
+    return make_pair("world", 7);
+}
+tie(my_string, number) = func();
+cout << my_string << number << endl;
+```
+
 
 
 ## Map
@@ -206,6 +228,9 @@ mp["hello"] = 1; // 访问操作，该操作会在没有"hello"键值的情况�
 
 // 如果我们需要判断一个键值是否存在于map...    count()方法
 mp.count("key"); // 函数会返回键值为"key"的元素在mp中的数量，如果为0代表不存在
+// find() 方法
+map<string, int>::iterator it = mp.find("key"); // 返回目标的迭代器，如果没找到则返回 mp.end()
+
 
 // 遍历map...
 map<string, int>::iterator it; // 声明一个迭代器，注意类型应该与需要查找的map类型完全一样(双冒号"::"前的部分)

@@ -75,3 +75,21 @@ int pow_mod(int a, int b, int c){ // ( a ^ b ) mod c
 }
 ```
 
+# 底层数据处理
+
+## 整型数转化为二进制
+
+问题描述：获得整型数的二进制存储的每一位。
+
+解决方法：通过移位操作，按位与 1 来获得二进制表示的每一位。
+
+```c++
+void func(int aim){
+    list<int> L;
+    while(aim){
+        L.push_front(aim & 1) // 取出 aim 的最低位，也可以写作：aim % 2
+        aim = aim >> 1;
+    }
+}
+```
+
