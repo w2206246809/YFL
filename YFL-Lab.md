@@ -399,6 +399,10 @@ print('时间：(%Y-%m-%d %H:%M:%S %p):', dt.strftime('%y-%m-%d %I:%M:%S %p'))
 
 在python文件头部添加 #! /usr/bin/env <python> `（注：<python>应填写需要使用的python版本）`
 
+**ImportError: No module named _internal:**
+
+可能是重复安装pip导致的问题，解决方法：sudo apt remove python-pip
+
 ## pip
 
 pip是安装Python包的主要方法。
