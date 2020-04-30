@@ -393,6 +393,20 @@ print('时间：(%Y-%m-%d %H:%M:%S %p):', dt.strftime('%y-%m-%d %I:%M:%S %p'))
 
 
 
+接收命令行参数：
+
+```python
+import sys
+
+sys.argv # 参数列表
+
+len(sys.argv) # 参数个数
+```
+
+
+
+
+
 ## 常见问题
 
 **OSError: [Errno 8] Exec format error**：
