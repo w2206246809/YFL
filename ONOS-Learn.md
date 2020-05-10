@@ -38,6 +38,10 @@ devices | devices -s
 
 通过 devices -s 查询目标设备的 id，然后 device-remove <id> 删除该设备
 
+- 查看流表信息
+
+flows
+
 # 添加自定义控制器应用
 
 1）在onos项目中apps文件夹下仿照已有项目结构创建新的应用，注意更改BUILD文件中的应用名称和包应用名称与apps直属的文件夹名称统一。
