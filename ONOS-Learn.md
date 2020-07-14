@@ -55,3 +55,5 @@ flows
 4）完成！
 
 # RESTFUL-API
+
+打开文档查看相关信息：http://<onos_ip>:8181/onos/v1/docs
