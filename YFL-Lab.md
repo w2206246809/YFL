@@ -99,6 +99,17 @@ vi doc_file
 :w
 ```
 
+解除端口占用：
+
+```shell
+# 查询占用端口的进程pid
+sudo lsof -i:[PORT_NUMBER]
+# 获得pid之后根据pid关闭进程
+sudo kill -9 [PID]
+```
+
+
+
 # Visual Studio
 
 排版选中的代码：ctrl + k, ctrl + f ( 排版所有代码：ctrl + a, ctrl + k, ctrl + f )
@@ -602,7 +613,7 @@ module = ast.fix_missing_locations(ast.Module([func_ast]))
 module = ast.fix_missing_locations(ast.Module([func_ast], []))
 ```
 
-即可。这是因为该函数需要两个参数而原函数之提供了一个。
+即可。这是因为该函数需要两个参数而原函数只提供了一个。
 
 #### Get Start
 
@@ -1455,6 +1466,10 @@ def handle_send():
 
 ```javascript
 $('选中目标滚动条元素').scrollTop( value ); // value为数字，取值范围大于等于0
+
+// 设置滚动条至最底部
+var aimDiv = document.getElementById("msgScroller");
+aimDiv.scrollTop = aimDiv.scrollHeight;
 ```
 
 
