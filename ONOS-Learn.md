@@ -38,6 +38,10 @@ devices | devices -s
 
 通过 devices -s 查询目标设备的 id，然后 device-remove <id> 删除该设备
 
+- 查看流表信息
+
+flows
+
 # 添加自定义控制器应用
 
 1）在onos项目中apps文件夹下仿照已有项目结构创建新的应用，注意更改BUILD文件中的应用名称和包应用名称与apps直属的文件夹名称统一。
@@ -49,3 +53,7 @@ devices | devices -s
 3）通过指令 find -name "*<controllerApp_name>-oar.oar" 找到编译好的控制器文件所在地（一般以./.cache...开头），在该目录下执行 onos-app localhost install onos-apps-<controllerApp_name>-oar.oar 加载控制器应用（确保onos服务在运行）。
 
 4）完成！
+
+# RESTFUL-API
+
+打开文档查看相关信息：http://<onos_ip>:8181/onos/v1/docs

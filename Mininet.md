@@ -69,3 +69,8 @@ if __name__ == '__main__':
     main_run()
 ```
 
+# Mininet命令
+
+link s1 s2 down : 断开s1到s2之间的链路
+
+link s1 s2 up : 恢复s1到s2之间的链路
