@@ -160,6 +160,18 @@ sudo kill -9 [PID]
 
 # C/C++
 
+```c++
+// 从键盘输入读取一行（不会因为空格而中断）
+#include <iostream>
+#include <string>
+using namespace std;
+
+string str;
+getline(cin, str);
+```
+
+
+
 ## 模板
 
 ```c++
