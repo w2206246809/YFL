@@ -160,6 +160,8 @@ sudo kill -9 [PID]
 
 # C/C++
 
+## I/O
+
 ```c++
 // 从键盘输入读取一行（不会因为空格而中断）
 #include <iostream>
