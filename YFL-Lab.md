@@ -160,6 +160,8 @@ sudo kill -9 [PID]
 
 # C/C++
 
+gcc <name>.c -o <output>
+
 ## I/O
 
 ```c++
