@@ -263,3 +263,20 @@ bool cmp(T a, T b){
 sort(array.begin(), array.end(), cmp);
 ```
 
+# 运算符重载
+
+运算符重载的过程中应该注意的一点是返回值一般应该返回引用类型
+
+```c++
+// 以下代码截取自./MyHFile/pstString.h
+Str& operator+=(const Str &src) {
+		char* old = this->vals;
+		this->vals = (char*)malloc(this->_length + src._length + 1);
+		memcpy(this->vals, old, this->_length);
+		free(old);
+		memcpy(this->vals + this->_length, src.vals, src._length + 1);
+		this->_length += src._length;
+		return *this;
+	}
+```
+
