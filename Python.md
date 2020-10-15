@@ -271,6 +271,38 @@ file_createOrChange.write(string)
 
 文件重命名：os.rename('<修改前的名称>', '<修改后的名称>')
 
+**遍历文件名 / 修改文件名**
+
+```python
+import os
+
+files = os.listdir("[ 这里填写文件绝对路径，注意使用双斜杠\\ ]")
+for fileName in files:
+    print(fileName)
+    
+    # TODO: 修改文件后缀名
+    # ...
+    # seg[0]为文件后缀前的名字，seg[1]为文件后缀名
+    seg = os.path.splitext(fileName)
+    newName = seg[0] + '.newFix'
+    
+    os.chdir("[ 这里填写文件绝对路径，注意使用双斜杠\\ ]")
+    os.rename(fileName, newName)
+```
+
+**遍历文件**
+
+```python
+import os
+
+for root, dirs, files in os.walk(rootPath): # rootPath 为需要遍历的文件夹路径（可以是相对路径）
+    for fileName in files:
+        filePath = root + '/' + fileName
+        fileStream = open(filePath, 'r')
+        print(fileStream.read())
+        fileStream.close()
+```
+
 # 服务器设计
 
 ## Flask服务器框架
