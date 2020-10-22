@@ -128,6 +128,20 @@ int main(){
 
 # I/O
 
+## 格式化字符串
+
+```c
+#include <stdio.h>
+int main(){
+    int int_src = 12;
+	char aim[1024];
+	sprintf(aim, "hello%d", int_src);
+    return 0;
+}
+```
+
+
+
 ```c++
 // 从键盘输入读取一行（不会因为空格而中断）
 #include <iostream>
