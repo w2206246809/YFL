@@ -1,5 +1,131 @@
 在Linux下编译：gcc <file_name>.c -o <output_name>
 
+# 常见问题
+
+在Linux环境下使用math.h库的时候需要在编译时添加参数 -lm
+
+在Linux环境下使用pthread.h库（多线程）的时候需要在编译时添加参数 -lpthread
+
+# H头文件定义
+
+定义h头文件时需要增加参数 #pragma once 或者
+
+```c++
+#ifndef __HFILENAME_H__ 
+// 在这里定义头文件主要内容
+#endif
+```
+
+来防止重复定义
+
+同样的，如果定义头文件的过程中需要引用其他头文件，为了防止重复定义需要使用如下方式引用：
+
+```c++
+#ifndef __STDLIB_H__
+#include <stdlib.h>
+#endif
+```
+
+**重要**：使用#ifndef时，后面的头文件名称一律大写，点用一个下划线替代，同时需要两个下划线将名称包含。
+
+# 多线程
+
+```c++
+#include <pthread.h>
+// 注意：定义多线程函数的时候返回值需要为void* 参数需要为void*
+void* thread_func(void* args){
+    printf("thread run\n");
+}
+int main(){
+    pthread_t thread;
+    
+    // 绑定线程函数
+    pthread_create(&thread, NULL, (void*)thread_func, "");
+    // 开始线程（执行之前绑定的函数）
+    pthread_detach(thread);
+    // 等待执行
+    sleep(10);
+    // 结束线程
+    pthread_cancel(thread);
+    return 0;
+}
+```
+
+
+
+# Socket
+
+## UDP
+
+**Windows**:
+
+client
+
+```c++
+#include <WinSock2.h>
+int main(){
+    // init...
+    WSADATA wsd;
+    WSAStartup(MAKEWORD(1, 1), &wsd);
+    
+    SOCKET sockClient = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+    SOCKADDR_IN servAddr;
+    
+    // set ip:port
+    servAddr.sin_family = AF_INET;
+	servAddr.sin_addr.S_un.S_addr = inet_addr("127.0.0.1");
+	servAddr.sin_port = htons(8888);
+    
+    char* msg = "hello";
+    int length = 6;
+    int servAddr_length = sizeof(servAddr);
+    
+    // sending
+    sendto(sockClient, msg, length, 0, (SOCKADDR*)& servAddr, servAddr_length);
+    // recving
+    recvfrom(sockClient, msg, length, 0, (SOCKADDR*)& servAddr, &servAddr_length);
+    
+    return 0;
+}
+```
+
+server
+
+```c++
+#include <WinSock2.h>
+
+int main(){
+    // init...
+    WSADATA wsd;
+
+	SOCKET sockServ = socket(AF_INET, SOCK_DGRAM, 0);
+
+	int sockAddrIn_length = sizeof(servAddr);
+
+    // listen on localhost port is 8888
+    SOCKADDR_IN servAddr;
+	servAddr.sin_family = AF_INET;
+	servAddr.sin_addr.S_un.S_addr = htonl(INADDR_ANY);
+	servAddr.sin_port = htons(8888);
+	// bind port
+	bind(sockServ, (SOCKADDR*) &servAddr, sockAddrIn_length);
+    
+    char msg[1024];
+    int length = 1024;
+    
+    // recving...
+    SOCKADDR_IN clientAddr;
+    recvfrom(sockServ, msg, length, 0, (SOCKADDR*)&clientAddr, &sockAddrIn_length);
+    
+    // sending...
+    sendto(sockServ, msg, length, 0, (SOCKADDR*) &clientAddr, sockAddrIn_length);
+    return 0;
+}
+
+```
+
+
+
 # I/O
 
 ```c++
