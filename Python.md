@@ -271,6 +271,14 @@ file_createOrChange.write(string)
 
 文件重命名：os.rename('<修改前的名称>', '<修改后的名称>')
 
+删除非空文件夹：
+
+```python
+import shutil
+
+shutil.rmtree(path)
+```
+
 **遍历文件名 / 修改文件名**
 
 ```python
