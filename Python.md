@@ -267,6 +267,17 @@ string = file_read.read()
 file_createOrChange.write(string)
 ```
 
+**逐行读取文件**
+
+```python
+file = open("fileName", 'r')
+lines = file.readlines()
+for line in lines:
+    print(line)
+```
+
+
+
 删除文件：os.remove('<文件名>')
 
 文件重命名：os.rename('<修改前的名称>', '<修改后的名称>')
