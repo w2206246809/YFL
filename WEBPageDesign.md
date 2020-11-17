@@ -260,6 +260,20 @@ function li-click(obj){
 }
 ```
 
+**调用jQuery中的函数**
+
+```js
+$(function(){
+    window.jQueryFunction = function(xx){ // jQuery内部声明
+        // 程序代码
+    }
+});
+
+jQueryFunction(xx); // 调用jQuery内部函数
+```
+
+
+
 ## 元素选择
 
 jQuery的主要功能：HTML元素选取、元素操作、CSS操作、事件、特效、DOM遍历、AJAX以及更多框架。

@@ -6,19 +6,14 @@
 #include <string.h>
 #endif // !STRING_H
 
-/*
-#ifndef __STDIO_H__
-#include <stdio.h>
-#endif // !__STDIO_H__
-*/
-
 #pragma once
 class Str {
 public:
 
 	Str() {
 		_length = 0;
-		vals = NULL;
+		vals = (char*)malloc(1);
+		vals[0] = 0;
 	}
 
 	Str(const char src[]) {
@@ -89,6 +84,30 @@ public:
 		memcpy(tmp->vals, this->vals, this->_length);
 		memcpy(tmp->vals + this->_length, src.vals, src._length + 1);
 		return *tmp;
+	}
+
+	bool operator==(const char src[]) {
+		int i = 0;
+		while (vals[i] == src[i]) {
+			if (i == _length && src[i] == 0) {
+				return true;
+			}
+			++i;
+		}
+		return false;
+	}
+
+	bool operator==(const Str &src) {
+		if (_length == src._length) {
+			int i = 0;
+			while (vals[i] == src.vals[i]) {
+				++i;
+				if (i >= _length) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 private:
