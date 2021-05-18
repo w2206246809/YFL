@@ -56,6 +56,16 @@ tar -zcvf <文件名> <压缩后的文件名>
 
 tar -zxvf <文件名>
 
+## 文件创建
+
+touch file_name 新建文件在当前目录
+
+echo "msg" >> Text 新建文件Text并将msg写入
+
+cat Text 打开Text文件
+
+cat>>Text1 创建Text1文件之后可以向文件写入内容，ctrl+D关闭
+
 # 常见问题
 
 去除文本中的 ‘\r’ ：
@@ -79,3 +89,14 @@ netstat -ntlp|grep [PORT_NUMBER]
 sudo kill -9 [PID]
 ```
 
+# Vim/Vi操作
+
+常用命令：
+
+i 编辑模式
+
+w 保存
+
+q 退出
+
+/<search_string> 搜索字段<search_string> n 下一个匹配的结果

@@ -17,7 +17,7 @@ git status 查看当前状态
 
 git diff 查看修改内容
 
-git log 查看日志
+git log 查看日志 --name-status 显示提交中文件变更情况
 
 git show <commit_id> 查看日志中某一项的具体提交情况
 
@@ -129,7 +129,7 @@ git diff --name-status 只查看文件列表
 
 
 
-**新建分支** 都是基于当前所在分支新建的分支
+**新建分支** 基于当前所在分支新建的分支
 
 git checkout <branch_name> 切换到目标分支 -f 强制切换
 
@@ -149,7 +149,11 @@ git fetch 与 git pull 区别 - 不会做自动合并
 
 git merge branch_name
 
+`合并后进行一次提交，不会破坏之前的节点`
+
 git rebase branch_name 将目标分支合并到当前分支
+
+`将目标分支中与当前分支出现的每个差异节点合并并提交（每个节点都提交一次）`**警告：会打乱时间轴**
 
 
 
@@ -166,3 +170,21 @@ git checkout . 撤销所有修改而未提交的操作（注意有一个点 **.*
 git checkout -filename 撤销某一个文件的修改
 
 git checkout commit_id 撤销到历史上某次提交的工作区
+
+
+
+**提交进阶**
+
+git commit --amend 修改最近一次提交的信息 
+
+
+
+**本地节点更新**
+
+查看本地与服务器上分支的区别
+
+git diff branch_name origin/branch_name
+
+git pull origin branch_name
+
+`git fetch + git merge = git pull`
