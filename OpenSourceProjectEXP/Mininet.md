@@ -74,3 +74,20 @@ if __name__ == '__main__':
 link s1 s2 down : 断开s1到s2之间的链路
 
 link s1 s2 up : 恢复s1到s2之间的链路
+
+# 环路
+
+当网络拓扑中存在环路时，使用二层交换控制器应用指导转发会出现环路风暴的情况，此时需要在OVS定义时使其应用STP协议避免环路风暴。
+
+方法一：
+
+```python
+# 在Mininet应用中定义OVS时附加参数启用STP
+self.addSwitch('s', failMode='standalone', stp=True)
+```
+
+方法二：
+
+在通过 mn 启动Mininet拓扑时附加参数：
+
+--switch=ovsk,failMode='standalone',stp=True
