@@ -97,6 +97,8 @@ i 编辑模式
 
 w 保存
 
-q 退出
+q 退出 q! 强制退出
 
 /<search_string> 搜索字段<search_string> n 下一个匹配的结果
+
+命令模式下双击 d 可以删除一行

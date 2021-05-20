@@ -11,7 +11,17 @@
 - 复制ssh key：clip < ~/.ssh/id_rsa.pub （在git bash中）
 - 个人 - 设置 - SSH and GPG keys - New SSH key - 在 "key" 中粘贴
 
+### 创建组织和仓库
 
+命名方式：小写字母
+
+组织（Group）：
+
+用于存放一系列相关的仓库（项目），权限一般设置非public，可以添加用户被添加的用户可以访问
+
+仓库（Project）：
+
+### Git Bash命令
 
 git status 查看当前状态
 
@@ -127,6 +137,8 @@ git diff --name-status 只查看文件列表
 
 常见git push格式：git push origin branch_name
 
+参数：增加 -f 强制 push 到远端
+
 
 
 **新建分支** 基于当前所在分支新建的分支
@@ -165,11 +177,17 @@ git reset commit_id 主要用于撤销 git add/commit 等操作
 
 
 
+在提交前可用的回退方法：
+
 git checkout . 撤销所有修改而未提交的操作（注意有一个点 **.** ）
 
-git checkout -filename 撤销某一个文件的修改
+git checkout filename 撤销某一个文件的修改
 
 git checkout commit_id 撤销到历史上某次提交的工作区
+
+
+
+git reflog 显示最近所有的命令操作
 
 
 
@@ -188,3 +206,43 @@ git diff branch_name origin/branch_name
 git pull origin branch_name
 
 `git fetch + git merge = git pull`
+
+### 3、冲突处理
+
+分支合并过程中可能会产生冲突：两个分支中两个相同文件中相似行数的内容不同。
+
+**解决方法：**
+
+1）手动解决
+
+根据实际需要编辑出现冲突的文件，之后通过 git add & git commit 的方法解决冲突。
+
+2）git mergetool
+
+### 4、Fork & Merge Request
+
+将仓库中的代码同步到个人仓库，之后通过merge request的方法实现代码合并。
+
+1）通过fork获取代码（而非clone）
+
+2）在个人仓库下修改
+
+3）通过new merge request提交合并申请
+
+
+
+Merge Request的**冲突解决** on gitlab.huawei.com
+
+1）在网页端merge request时通过resolve conflict合并；
+
+2）clone 目标仓库到本地进行冲突消除处理。
+
+
+
+**代码检视**，review，在changes列表下查看变化，靠左侧增加意见（discussion页面中保存所有检视意见）
+
+### 5、issue
+
+记录项目中需要提高或解决的问题。用于项目周期的管理。
+
+在gitlab网页创建、操作issue
