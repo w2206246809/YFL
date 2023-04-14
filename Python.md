@@ -502,8 +502,9 @@ return render_template('<模板资源（网页）文件名称>', var_name=var)
 
 静态资源是指在 ./static 文件夹下的资源，服务器会认为该文件夹下的资源是不会改动的（因此主要存放框架文件素材文件等）。如果有文件在设计时需要不断更改，如果把它们放在静态文件夹下将会导致它们的更改不会应用到服务器上进而出现一些问题，因此，**请将需要更改的文件保存在模板资源文件夹 (./templates) 中**。
 
-# PtQt
+# PyQt
 pip install PyQt5
+
 pip install PyQt5-tools
 
 ```python
@@ -519,9 +520,12 @@ if __name__=='__main__':
 ```
 
 Python打包 -Python2
+
 python output.py py2exe
 
+
 Python打包 -Python3
+
 pyinstaller.exe --onefile BetaToolsV1.2.py --name test1.exe
 
 
