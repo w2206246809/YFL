@@ -505,7 +505,8 @@ return render_template('<模板资源（网页）文件名称>', var_name=var)
 # PtQt
 pip install PyQt5
 pip install PyQt5-tools
-'''python
+
+```python
 if __name__=='__main__':
     import sys
     app=QtWidgets.QApplication(sys.argv)
@@ -515,7 +516,8 @@ if __name__=='__main__':
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_()) 
-'''
+```
+
 Python打包 -Python2
 python output.py py2exe
 
