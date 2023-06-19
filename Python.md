@@ -513,7 +513,7 @@ if __name__=='__main__':
     app=QtWidgets.QApplication(sys.argv)
     app.setStyle('Fusion')
     MainWindow=QtWidgets.QMainWindow()
-    ui=Ui_MainWindow()
+    ui=Ui_MainWindow() # pyqt-designer 自动生成的类
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_()) 
