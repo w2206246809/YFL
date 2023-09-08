@@ -401,6 +401,8 @@ bool cmp(T a, T b){
     return a > b; // 当满足条件 a > b 的时候出发sort排序的交换
 }
 sort(array.begin(), array.end(), cmp);
+
+// stable_sort() 使用方法与 sort() 相同, 是基于归并排序实现的稳定算法
 ```
 
 # 运算符重载
