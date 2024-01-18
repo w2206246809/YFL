@@ -249,6 +249,10 @@ dict = json.loads( jsonStr )
 # 将字典转换为json字符串
 
 jsonStr = json.dumps( dict )
+
+# 如果字典中有非ascii字符，并且希望dumps后的字符串不被转义可以直接显示
+jsonStr = json.dumps(dict, ensure_ascii=False)
+
 ```
 
 # 文件操作
